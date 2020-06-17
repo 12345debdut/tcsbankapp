@@ -1,0 +1,105 @@
+{%extends 'layouts/baselayout.html'%}
+
+{%block content%}
+<form method="POST" action="">
+    {{form.hidden_tag()}}
+    <div style="padding: 15px;">
+        <input class="form-control form-control-md" name="SSH_id" value="{{customer.SSH_id}}" disabled/>
+    </div>
+    <div style="padding: 15px;">
+    <label for="uname"><b>{{form.name.label}}</b></label>
+    {%if form.name.errors%}
+        {{form.name(class="form-control form-control-md is-invalid")}}
+        <div class="invalid-feedback">
+            {%for error in form.name.errors%}
+                <span>{{error}}</span>
+            {%endfor%}
+        </div>
+        {%else%}
+        {{form.name(class="form-control form-control-md",value=customer.name)}}
+    {%endif%}
+    </div>
+    <div style="padding: 15px;">
+        <label for="uname"><b>{{form.age.label}}</b></label>
+        {%if form.age.errors%}
+            {{form.age(class="form-control form-control-md is-invalid")}}
+            <div class="invalid-feedback">
+                {%for error in form.age.errors%}
+                    <span>{{error}}</span>
+                {%endfor%}
+            </div>
+            {%else%}
+            {{form.age(class="form-control form-control-md",value=customer.age)}}
+        {%endif%}
+    </div>
+    <div style="padding: 15px;">
+        <label for="uname"><b>{{form.address.label}}</b></label>
+        {%if form.address.errors%}
+            {{form.address(class="form-control form-control-md is-invalid")}}
+            <div class="invalid-feedback">
+                {%for error in form.address.errors%}
+                    <span>{{error}}</span>
+                {%endfor%}
+            </div>
+            {%else%}
+            {{form.address(class="form-control form-control-md",value=customer.address)}}
+        {%endif%}
+    </div>
+    <div style="padding: 15px;">
+        <label for="uname"><b>{{form.active.label}}</b></label>
+        {%if form.active.errors%}
+            <div class="form-check">
+                {{form.active(class="form-check-input is-invalid")}}
+                <label class="form-check-label" for="exampleCheck1">{{form.active.label}}?</label>
+            </div>
+            <div class="invalid-feedback">
+                {%for error in form.active.errors%}
+                    <span>{{error}}</span>
+                {%endfor%}
+            </div>
+            {%else%}
+            <div class="form-check">
+                {{form.active(class="form-check-input",checked=customer.active)}}
+                <label class="form-check-label" for="exampleCheck1">{{form.active.label}}?</label>
+              </div>
+        {%endif%}
+        </div>
+    <div style="padding: 15px;">
+        <label for="uname"><b>{{form.state.label}}</b></label>
+        {%if form.state.errors%}
+            {{form.state(class="form-control form-control-md is-invalid")}}
+            <div class="invalid-feedback">
+                {%for error in form.state.errors%}
+                    <span>{{error}}</span>
+                {%endfor%}
+            </div>
+            {%else%}
+            {{form.state(class="form-control form-control-md",id="selectList")}}
+        {%endif%}
+    </div>
+    <div style="padding: 15px;">
+        <label for="uname"><b>{{form.city.label}}</b></label>
+        {%if form.city.errors%}
+            {{form.city(class="form-control form-control-md is-invalid")}}
+            <div class="invalid-feedback">
+                {%for error in form.city.errors%}
+                    <span>{{error}}</span>
+                {%endfor%}
+            </div>
+            {%else%}
+            {{form.city(class="form-control form-control-md",value=customer.city)}}
+        {%endif%}
+        <diV style="padding:10px;">
+            {{form.submit(class="btn btn-primary")}}
+        </diV>
+    </div>
+</form>
+
+{%endblock content%}
+{%block js%}
+    <script>
+        $(document).ready(()=>{
+            $("#selectList option[value={{state}}]").attr('selected',true)
+        })
+    </script>
+{%endblock js%}

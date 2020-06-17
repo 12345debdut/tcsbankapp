@@ -1,0 +1,45 @@
+  /* CSS Reset */
+  body {
+    font-family: 'Baloo Bhai', cursive;
+    color: white;
+    margin: 0px;
+    padding: 0px;
+    /* background: url('img/bg.jpg'); */
+}
+
+
+.container {
+    border: 2px solid white;
+    margin-left: 35%;
+    padding: 75px;
+    display: inline-block;
+  
+    border-radius: 28px;
+}
+.form-group{
+    font-family: 'Baloo Bhai', cursive;
+    text-align: center;
+    display: block;
+    width: 308px;
+    padding: 1px;
+   
+    margin: 11px auto;
+    font-size: 25px;
+  
+    color:black;
+}
+
+
+
+.container h1 {
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    width: 33%;
+    margin: 24px;
+}
+.container label{
+    color:black;
+}

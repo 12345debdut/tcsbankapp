@@ -1,0 +1,51 @@
+{%extends 'layouts/baselayout.html'%}
+
+{%block content%}
+<div class="container" style="width: 100%;display:flex;justify-content:center;padding:20px;flex-direction:column">
+        <h1>Customer Details</h1> 
+        {%if customer%}
+
+        <label class="formgroup label" >Customer_ID</label>
+        <input type="text" name="" value="{{customer.customer_id}}" placeholder="No data found" disabled>
+        <br>
+        
+        <label class="formgroup label" >SSH id</label>
+        <input type="text" name="" value="{{customer.SSH_id}}" placeholder="No data found" disabled>
+        <br>
+    
+        <label class="formgroup label" >Name</label>
+        <input type="text" name="" value="{{customer.name}}" placeholder="No data found" disabled>
+        <br>
+    
+        <label class="formgroup label" >Age</label>
+        <input type="text" name="" value="{{customer.age}}" placeholder="No data found" disabled>
+        <br>
+
+        <label class="formgroup label" >Address</label>
+
+        <input type="text" name="" value="{{customer.address}}" placeholder="No data found" disabled>
+
+        <br>
+        <label class="formgroup label" >State</label>
+
+        <input type="text" name="" value="{{customer.state}}" placeholder="No data found" disabled>
+        
+        <br>
+        <label class="formgroup label" >City</label>
+
+        <input type="text" name="" value="{{customer.city}}" placeholder="No data found" disabled>
+        <br>
+        <a href="{{url_for('edit_customer',id=customer.SSH_id)}}" style="text-decoration: none;color:white">
+            <button class="btn btn-success">Edit</button></a>
+        <br>
+        <a href="{{url_for('delete_customer',id=customer.SSH_id)}}" style="text-decoration: none;color:white">
+        <button class="btn btn-danger">Delete</button></a>
+        <br>
+        <a href="{{url_for('create_account',customer_id=customer.customer_id)}}" 
+        style="text-decoration: none;color:black">
+            <button class="btn btn-warning">Create account</button></a>
+        {%else%}
+        <h3>No customer has found</h3>
+        {%endif%}
+    </div>
+{%endblock content%}

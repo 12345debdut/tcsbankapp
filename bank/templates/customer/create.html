@@ -1,0 +1,88 @@
+{%extends 'layouts/baselayout.html'%}
+
+{%block content%}
+<form action="" method="POST">
+    {{form.hidden_tag()}}
+    <div style="padding: 15px;">
+        <label for="uname"><b>{{form.SSH_id.label}}</b></label>
+        {%if form.SSH_id.errors%}
+            {{form.SSH_id(class="form-control form-control-md is-invalid")}}
+            <div class="invalid-feedback">
+                {%for error in form.SSH_id.errors%}
+                    <span>{{error}}</span>
+                {%endfor%}
+            </div>
+            {%else%}
+            {{form.SSH_id(class="form-control form-control-md")}}
+        {%endif%}
+        </div>
+    <div style="padding: 15px;">
+    <label for="uname"><b>{{form.name.label}}</b></label>
+    {%if form.name.errors%}
+        {{form.name(class="form-control form-control-md is-invalid")}}
+        <div class="invalid-feedback">
+            {%for error in form.name.errors%}
+                <span>{{error}}</span>
+            {%endfor%}
+        </div>
+        {%else%}
+        {{form.name(class="form-control form-control-md")}}
+    {%endif%}
+    </div>
+    <div style="padding: 15px;">
+        <label for="uname"><b>{{form.age.label}}</b></label>
+        {%if form.age.errors%}
+            {{form.age(class="form-control form-control-md is-invalid")}}
+            <div class="invalid-feedback">
+                {%for error in form.age.errors%}
+                    <span>{{error}}</span>
+                {%endfor%}
+            </div>
+            {%else%}
+            {{form.age(class="form-control form-control-md")}}
+        {%endif%}
+    </div>
+    <div style="padding: 15px;">
+        <label for="uname"><b>{{form.address.label}}</b></label>
+        {%if form.address.errors%}
+            {{form.address(class="form-control form-control-md is-invalid")}}
+            <div class="invalid-feedback">
+                {%for error in form.address.errors%}
+                    <span>{{error}}</span>
+                {%endfor%}
+            </div>
+            {%else%}
+            {{form.address(class="form-control form-control-md")}}
+        {%endif%}
+    </div>
+    <div style="padding: 15px;">
+        <label for="uname"><b>{{form.state.label}}</b></label>
+        {%if form.state.errors%}
+            {{form.state(class="form-control form-control-md is-invalid")}}
+            <div class="invalid-feedback">
+                {%for error in form.state.errors%}
+                    <span>{{error}}</span>
+                {%endfor%}
+            </div>
+            {%else%}
+            {{form.state(class="form-control form-control-md")}}
+        {%endif%}
+    </div>
+    <div style="padding: 15px;">
+        <label for="uname"><b>{{form.city.label}}</b></label>
+        {%if form.city.errors%}
+            {{form.city(class="form-control form-control-md is-invalid")}}
+            <div class="invalid-feedback">
+                {%for error in form.city.errors%}
+                    <span>{{error}}</span>
+                {%endfor%}
+            </div>
+            {%else%}
+            {{form.city(class="form-control form-control-md")}}
+        {%endif%}
+        <diV style="padding:10px;">
+            {{form.submit(class="btn btn-primary")}}
+        </diV>
+    </div>
+</form>
+{%endblock content%}

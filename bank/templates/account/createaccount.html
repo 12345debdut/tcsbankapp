@@ -1,0 +1,48 @@
+{%extends 'layouts/baselayout.html'%}
+{%block content%}
+<form action="" method="POST">
+    {{form.hidden_tag()}}
+    <div style="padding: 15px;">
+        <label for="uname"><b>{{form.customer_id.label}}</b></label>
+        {%if form.customer_id.errors%}
+            {{form.customer_id(class="form-control form-control-md is-invalid")}}
+            <div class="invalid-feedback">
+                {%for error in form.customer_id.errors%}
+                    <span>{{error}}</span>
+                {%endfor%}
+            </div>
+            {%else%}
+            {{form.customer_id(class="form-control form-control-md",value=customer_id)}}
+        {%endif%}
+        </div>
+    <div style="padding: 15px;">
+    <label for="uname"><b>{{form.account_type.label}}</b></label>
+    {%if form.account_type.errors%}
+        {{form.account_type(class="form-control form-control-md is-invalid")}}
+        <div class="invalid-feedback">
+            {%for error in form.account_type.errors%}
+                <span>{{error}}</span>
+            {%endfor%}
+        </div>
+        {%else%}
+        {{form.account_type(class="form-control form-control-md")}}
+    {%endif%}
+    </div>
+    <div style="padding: 15px;">
+        <label for="uname"><b>{{form.deposit_amount.label}}</b></label>
+        {%if form.deposit_amount.errors%}
+            {{form.deposit_amount(class="form-control form-control-md is-invalid")}}
+            <div class="invalid-feedback">
+                {%for error in form.deposit_amount.errors%}
+                    <span>{{error}}</span>
+                {%endfor%}
+            </div>
+            {%else%}
+            {{form.deposit_amount(class="form-control form-control-md")}}
+        {%endif%}
+        <diV style="padding:10px;">
+            {{form.submit(class="btn btn-primary")}}
+        </diV>
+    </div>
+</form>
+{%endblock content%}

@@ -1,0 +1,12 @@
+*We have added pdf generation in our project it is operating system oriented.
+*If you're using windows server then it will work. But incase of linux server it will not work for the os dependency.
+*We have no linux machine so we haven't tested it out.
+*Proccedure for linux machine.
+*run 
+sudo apt-get update
+sudo apt-get install xvfb libfontconfig wkhtmltopdf
+
+and find the path of wkhtmltopdf and replace it to the enviournment variable called 
+
+PDF_WKTHTMLTOPDF_PATH="<your path to wkhtmltopdf>"
+then it will work fine.

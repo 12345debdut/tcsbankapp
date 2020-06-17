@@ -1,0 +1,18 @@
+{%extends 'layouts/baselayout.html'%}
+
+{%block content%}
+    <div style="width: 100%;display:flex;justify-content:center;align-items:center;height:400px;flex-direction:column;">
+        <h1>Account delete</h1>
+        <label style="font-weight: bold;">Account Id.</label>
+        <input value="{{account.account_id}}" disabled/>
+        <br>
+        <label style="font-weight: bold;">Account type.</label>
+        <input value="{{account.account_type}}" disabled/>
+        <br>
+        <br>
+        <a href="{{url_for('delete_account',account_id=account.account_id,conf_delete=True)}}" 
+            style="text-decoration: none;color:wheat"><button class="btn btn-danger">
+            Delete</button></a>
+        <br>
+    </div>
+{%endblock content%}

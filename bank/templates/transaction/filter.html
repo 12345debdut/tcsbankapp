@@ -1,0 +1,114 @@
+{%extends 'layouts/baselayout.html'%}
+
+{%block content%}
+<div class="container" style="width: 100%;display:flex;justify-content:center;padding:20px;flex-direction:column">
+        <h1>Search Transaction</h1> 
+        <form method="POST" action="">
+            {{form.hidden_tag()}}
+        <div style="padding: 15px;">
+            <label for="uname"><b>{{form.account_id.label}}</b></label>
+            {%if form.account_id.errors%}
+                {{form.account_id(class="form-control form-control-md is-invalid")}}
+                <div class="invalid-feedback">
+                    {%for error in form.account_id.errors%}
+                        <span>{{error}}</span>
+                    {%endfor%}
+                </div>
+                {%else%}
+                {{form.account_id(class="form-control form-control-md")}}
+            {%endif%}
+        </div>
+        <div style="padding: 15px;">
+            <label for="uname"><b>{{form.start_date.label}}</b></label>
+            {%if form.start_date.errors%}
+                {{form.start_date(class="form-control form-control-md is-invalid")}}
+                <div class="invalid-feedback">
+                    {%for error in form.start_date.errors%}
+                        <span>{{error}}</span>
+                    {%endfor%}
+                    <br>
+                    <span>Format of date is: YYYY-MM-DD</span>
+                </div>
+                {%else%}
+                {{form.start_date(class="form-control form-control-md")}}
+                <span>Format of date is: YYYY-MM-DD</span>
+            {%endif%}
+        </div>
+        <div style="padding: 15px;">
+            <label for="uname"><b>{{form.end_date.label}}</b></label>
+            {%if form.end_date.errors%}
+                {{form.end_date(class="form-control form-control-md is-invalid")}}
+                <div class="invalid-feedback">
+                    {%for error in form.end_date.errors%}
+                        <span>{{error}}</span>
+                    {%endfor%}
+                    <br>
+                    <span>Format of date is: YYYY-MM-DD</span>
+                </div>
+                {%else%}
+                {{form.end_date(class="form-control form-control-md")}}
+                <span>Format of date is: YYYY-MM-DD</span>
+            {%endif%}
+        </div>
+        {{form.submit(class="btn btn-primary")}}
+        </form>
+        <br>
+        {%if transactions%}
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                <th>Transaction ID</th>
+                <th>Account ID</th>
+                <th>Amount</th>
+                <th>Action</th>
+                <th>Transfer account id</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {%for transaction in transactions%}
+                <tr>
+                    <td>{{transaction.transaction_id}}</td>
+                    <td>{{transaction.account_id}}</td>
+                    <td>{{transaction.amount}}</td>
+                    {%if transaction.deposit==1%}
+                        <td>Deposit</td>
+                        <td>Nothing</td>
+                    {%endif%}
+                    {%if transaction.deposit==0 and transaction.transfer==0%}
+                        <td>Withdraw</td>
+                        <td>Nothing</td>
+                        
+                    {%endif%}
+                    {%if transaction.transfer==1%}
+                        <td>Transfer</td>
+                        <td>{{transaction.transfer_account_id}}</td>
+                    {%endif%}   
+                    <td>{{transaction.action_date}}</td>    
+                </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+        <br>
+        {%if account_id and start_date and end_date%}
+        <button class="btn btn-primary" id="generate_pdf"><a
+            style="text-decoration: none;color:white">
+            Generate Pdf</a></button>
+        <button class="btn btn-warning" id="generate_excel"><a
+            style="text-decoration: none;color:white">
+            Generate Excel</a></button>
+        {%endif%}
+    {%endif%}
+    </div>
+    <script>
+        let end_date="{{end_date}}"
+        let start_date="{{start_date}}"
+        let account_id="{{account_id}}"
+        $('#generate_pdf').click(()=>{
+            window.open(`/generate/pdf/${start_date}/${end_date}?account_id=${account_id}`)
+        })
+        $('#generate_excel').click(()=>{
+            window.open(`/generate/excel/${start_date}/${end_date}?account_id=${account_id}`)
+        })
+    </script>
+{%endblock content%}

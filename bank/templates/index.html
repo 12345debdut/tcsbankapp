@@ -1,0 +1,88 @@
+{%extends 'layouts/baselayout.html'%}
+{%block css%}
+<link rel="stylesheet" href="{{url_for('static',filename='/css/index.css')}}">
+{%endblock css%}
+{%block content%}
+
+  <div class="slideshow-container" style="margin-top: 20px;">
+
+    <div class="mySlides ">
+      <div class="numbertext">1 / 3</div>
+      <img src="{{url_for('static',filename='images/slider1.jpg')}}" style="width:100%;resize:fit-content;">
+      <div class="text" style="color: black;">Trust worthy</div>
+    </div>
+    
+    <div class="mySlides ">
+      <div class="numbertext">2 / 3</div>
+      <img src="{{url_for('static',filename='images/slider2.jpg')}}" style="width:100%">
+      <div class="text">Card facility</div>
+    </div>
+    
+    <div class="mySlides ">
+      <div class="numbertext">3 / 3</div>
+      <img src="{{url_for('static',filename='images/slider3.jpg')}}" style="width:100%">
+      <div class="text">Better support</div>
+    </div>
+    
+    </div>
+    <br>
+    
+    <div style="text-align:center">
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+    </div>
+    
+    <div style="display: flex; justify-content: center;margin-top:20px">
+        <div class="col-sm-3" style="text-align: center;">
+        <img src="{{url_for('static',filename='images/wallet.PNG')}}" style="width:20%;">
+        <p style="padding: 10px;color:green;">The ideal location for all your banking needs</p>
+        </div>
+        <div class="col-sm-3" style="text-align: center;">
+        <img src="{{url_for('static',filename='images/credit-card.PNG')}}" style="width:20%;">
+        <p style="padding: 10px;color:green;">Deposit and withdraw money at any time</p>
+        </div>
+        <div class="col-sm-3" style="text-align: center;">
+        <img src="{{url_for('static',filename='images/cart.PNG')}}" style="width:20%;">
+        <p style="padding: 10px;color:green;">Engage in internet transactions without worry</p>
+        </div>
+      </div>
+      <div>
+        
+        <div style="display: flex; align-items: center; justify-content: center; text-align: center;">
+            <div>
+                <h3 style="color:rgb(15, 65, 15);">ABOUT US</h3>
+                <p style="padding: 10px;color:green;">We have been engaged in the banking sector for quite some time.With dedication and commitment of six of its founders in the year 2016, 
+                    August XYZ Bank was founded. XYZ Bank is headquartered in Mumbai, Maharashtra. We have our branches in Bangalore , 
+                    Kolkata, Pune, Hyderabad ,Gurgaon. Whether it is Corporate banking or personal banking we are 
+                    always here to serve you. We provide ways to manage your money with high security. 
+                    Our customers are always our center of focus and our first priority. We value our relationship 
+                    with our customers. “Financing at your fingertips” – is our motto.
+                </p> 
+            </div>
+        </div>
+      </div>
+{%endblock%}
+{%block js%}
+<script>
+    var slideIndex = 0;
+    showSlides();
+    
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}    
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+      setTimeout(showSlides, 5000); // Change image every 2 seconds
+    }
+    </script>
+{%endblock js%}

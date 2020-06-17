@@ -1,0 +1,45 @@
+{%extends 'layouts/baselayout.html'%}
+
+{%block content%}
+    <div style="width: 100%;display:flex;justify-content:center;flex-direction:column;align-items:center;height:500px;">
+        <h1>Search Account</h1>
+        <form method="POST" action="">
+            {{form.hidden_tag()}}
+            <div style="padding: 15px;">
+                <label for="uname"><b>{{form.customer_id.label}}</b></label>
+                {%if form.customer_id.errors%}
+                    {{form.customer_id(class="form-control form-control-md is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.customer_id.errors%}
+                            <span>{{error}}</span>
+                        {%endfor%}
+                    </div>
+                    {%else%}
+                    {{form.customer_id(class="form-control form-control-md",value=0)}}
+                {%endif%}
+            </div>
+
+            <div style="width: 100%;display:flex;justify-content:center;margin-top:10px;margin-bottom:10px;">
+                <strong>OR</strong>
+            </div>
+            
+            <div style="padding: 15px;">
+                <label for="uname"><b>{{form.account_id.label}}</b></label>
+                {%if form.account_id.errors%}
+                    {{form.account_id(class="form-control form-control-md is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.account_id.errors%}
+                            <span>{{error}}</span>
+                        {%endfor%}
+                    </div>
+                    {%else%}
+                    {{form.account_id(class="form-control form-control-md",value=0)}}
+                {%endif%}
+            </div>
+
+            <div style="width: 100%;display:flex;justify-content:center;margin-top:10px;margin-bottom:10px;">
+                {{form.submit(class="btn btn-warning")}}
+            </div>
+        </form>
+    </div>
+{%endblock content%}

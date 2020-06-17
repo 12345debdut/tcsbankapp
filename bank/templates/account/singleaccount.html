@@ -1,0 +1,39 @@
+{%extends 'layouts/baselayout.html'%}
+
+{%block content%}
+<div class="container" style="width: 100%;display:flex;justify-content:center;padding:20px;flex-direction:column">
+        <h1>Account Details</h1> 
+        {%if account%}
+
+        <label class="formgroup label" >Customer ID</label>
+        <input type="text" name="" value="{{account.customer_id}}" placeholder="No data found" disabled>
+        <br>
+        
+        <label class="formgroup label" >Account ID</label>
+        <input type="text" name="" value="{{account.account_id}}" placeholder="No data found" disabled>
+        <br>
+    
+        <label class="formgroup label" >Account type</label>
+        <input type="text" name="" value="{{account.account_type}}" placeholder="No data found" disabled>
+        <br>
+    
+        <label class="formgroup label" >Account Balance</label>
+        <input type="text" name="" value="{{account.deposit_amount}}" placeholder="No data found" disabled>
+        <br>
+
+        <a style="color: wheat;text-decoration:none;" 
+            href="{{url_for('deposit_account',account_id=account.account_id)}}">
+            <button class="btn btn-success">Deposit</button></a>
+            <br>
+            <a style="color: wheat;text-decoration:none;" 
+            href="{{url_for('withdraw_account',account_id=account.account_id)}}">
+            <button class="btn btn-danger">Withdraw</button></a>
+            <br>
+            <a style="color: black;text-decoration:none;" 
+                href="{{url_for('transfer_account',account_id=account.account_id)}}">
+                <button class="btn btn-warning">Transfer</button></a>
+        {%else%}
+        <h3>No account has found</h3>
+        {%endif%}
+    </div>
+{%endblock content%}

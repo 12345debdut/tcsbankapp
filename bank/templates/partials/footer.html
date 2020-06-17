@@ -1,0 +1,77 @@
+  <!-- Site footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6>About</h6>
+          <p class="text-justify">
+            We have been engaged in the banking sector for quite some time.With dedication and commitment of six of its founders in the year 2016, 
+                    August XYZ Bank was founded. XYZ Bank is headquartered in Mumbai, Maharashtra. We have our branches in Bangalore , 
+                    Kolkata, Pune, Hyderabad ,Gurgaon. Whether it is Corporate banking or personal banking we are 
+                    always here to serve you. We provide ways to manage your money with high security. 
+                    Our customers are always our center of focus and our first priority. We value our relationship 
+                    with our customers. “Financing at your fingertips” – is our motto.</p>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6>Services</h6>
+          <ul class="footer-links">
+            <li style="margin-top: 10px;"><a href="#">Debit and Credit Cards </a></li>
+            <li style="margin-top: 10px;"><a href="#">Retail and Consumer Banking </a></li>
+            <li style="margin-top: 10px;"><a href="#">Corporate Internet Banking </a></li>
+            <li style="margin-top: 10px;"><a href="#">Telebanking</a></li>
+            <li style="margin-top: 10px;"><a href="#">Mobile Banking  </a></li>
+          </ul>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6>Quick Links</h6>
+          {%if current_user.is_customer_exec==1%}
+          <ul class="footer-links">
+            <li><a  href="{{url_for('create_customer')}}">Create Customer</a>
+            </li>
+            <li><a href="{{url_for('all_customer')}}">All Customer</a>
+            </li>
+            <li></li>
+            <li><a href="{{url_for('customer_search')}}">Search Customer</a>
+            </li>
+            <li><a href="{{url_for('create_account')}}">Account create</a>
+            </li>
+            <li><a href="{{url_for('account_status')}}">Account status</a>
+            </li>
+          </ul>
+          {%endif%}
+          {%if current_user.is_cashier==1 or current_user.is_teller==1%}
+          <ul class="footer-links">
+            <li><a href="{{url_for('account_search')}}">Account search</a>
+            </li>
+            <li><a href="{{url_for('all_transaction',tran_type='all')}}">All Transaction</a>
+            </li>
+            <li><a href="{{url_for('all_transaction',tran_type='deposit')}}">Deposit Transaction</a>
+            </li>
+            <li><a href="{{url_for('all_transaction',tran_type='withdraw')}}">Withdraw Transaction</a>
+            </li>
+            <li><a href="{{url_for('all_transaction',tran_type='transfer')}}">Transfer Transaction</a></li>
+            <li><a href="{{url_for('filter_transaction')}}">Search Transaction</a></li>
+          </ul>
+          {%endif%}
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <ul class="social-icons">
+            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+          </ul>
+        </div>
+      </div>
+    </div>
+</footer>

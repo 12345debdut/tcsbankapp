@@ -1,0 +1,42 @@
+{%extends 'layouts/baselayout.html'%}
+
+{%block content%}
+<div class="container" style="width: 100%;display:flex;justify-content:center;padding:20px;flex-direction:column">
+            <h1>Customer Details</h1> 
+        <label class="formgroup label" >SSH id</label>
+        <input type="text" name="" value="{{customer.SSH_id}}" placeholder="Enter your Name" disabled>
+        <br>
+    
+        <label class="formgroup label" >Name</label>
+        <input type="text" name="" value="{{customer.name}}" placeholder="Enter your Age" disabled>
+        <br>
+    
+        <label class="formgroup label" >Age</label>
+        <input type="text" name="" value="{{customer.age}}" placeholder="Enter your Gender" disabled>
+        <br>
+
+        <label class="formgroup label" >Address</label>
+
+        <input type="text" name="" value="{{customer.address}}" placeholder="Enter your Locality" disabled>
+
+        <br>
+        <label class="formgroup label" >State</label>
+
+        <input type="text" name="" value="{{customer.state}}" placeholder="Enter your Locality" disabled>
+        
+        <br>
+        <label class="formgroup label" >City</label>
+
+        <input type="text" name="" value="{{customer.city}}" placeholder="Enter your Locality" disabled>
+    
+    <br>
+    <a style="text-decoration: none;color:white" 
+        href="{{url_for('delete_customer',id=customer.SSH_id,conf_delete=True,next_page=page)}}">
+        <button class="btn btn-danger">
+        Delete?</button></a>
+        <a style="text-decoration: none;color:black;"
+        href="{{url_for('all_customer',page=page)}}"
+        ><button class="btn btn-warning " style="margin-top:10px">
+        Cancel?</button></a>
+    </div>
+{%endblock content%}
